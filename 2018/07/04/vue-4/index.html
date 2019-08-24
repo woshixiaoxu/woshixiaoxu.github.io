@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小许在 Github 上的个人博客">
+    <meta name="keyword" content>
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="xiaoxu" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        vue-4｜xiaoxu
+        
+    </title>
+
+    <link rel="canonical" href="http://woshixiaoxu.github.io/2018/07/04/vue-4/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    xiaoxu
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/catalog/">Catelog</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/img/bg.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>vue-4</h1>
+                    
+                    <span class="meta">
+                         作者 小许哇哇哇
+                        <span>
+                          日期 2018-07-04
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#列表渲染"
+                           title="列表渲染">列表渲染</a>
+                        
+                        <a class="tag" href="/tags/#事件"
+                           title="事件">事件</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            vue-4
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><ul>
+<li><p>遍历对象：遍历对象一个值是val，两个值第一个val，第二是key三个值第一个val，第二个是key，第三个是index</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-for=&quot;(item,key,index) of obj&quot;&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>遍历数组：遍历数组只有两个值 item index，你也可以用 of 替代 in 作为分隔符，因为它更接近 JavaScript 迭代器的语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-for=&quot;(每一项,下标) of arr&quot;&gt;&#123;&#123;下标&#125;&#125;---&#123;&#123;每一项&#125;&#125;&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>key值管理:只进行遍历但不操作数据时可以不加key,如果使用key需要使用 v-bind绑定,key必须是唯一,一般情况下index当做key处理,不使用key值时进行数据操作会把DOM节点就地复用，如果使用key会把DOM节点摧毁重建，建议尽可能在使用 v-for 时提供 key attribute，除非遍历输出的 DOM 内容非常简单，或者是刻意依赖默认行为以获取性能上的提升</p>
+</li>
+<li><p>向Vue实例化下追加数据:</p>
+<ul>
+<li>数组追加:Vue.set(数组,下标,添加的值)</li>
+<li>Vue实例化对象.$set(数组,下标,添加的值)</li>
+<li>对象追加：Vue.set(对象,key,val)</li>
+<li>Vue实例化对象.$set(数对象,key,val)</li>
+</ul>
+</li>
+<li><p>使用template模板进行遍历:<template v-for="(item,index) of arr">，不会渲染到页面中，v-for循环可以使用template，根据DOM合理使用template模板</template></p>
+</li>
+<li><p>v-if和v-for在同一DOM节点中使用:<li v-for="todo in todos" v-if="todo > 3">，v-for和v-if在同一个DOM中去使用时，v-for优先级始终大于if，不论是否满足条件都会进行遍历，遍历完之后再进行判断，满足条件的进行渲染，不满足条件的舍去，比较消耗性能，使用filter过滤+v-for方法替代v-for和v-if在同一行上</li></p>
+</li>
+<li><p>遍历嵌套:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template v-for=&quot;item of arr&quot;&gt;</span><br><span class="line">    &lt;!--&lt;div&gt;&#123;&#123;item&#125;&#125;&lt;/div&gt;  遍历出内层的数组--&gt;</span><br><span class="line">    &lt;div v-for=&quot;i of item&quot;&gt;</span><br><span class="line">        &#123;&#123;i&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><ul>
+<li><p>event事件对象,methods下的方法默认是自带event事件对象的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button @click=&quot;clickFn($event事件对象)&quot;&gt;event&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修饰符 </p>
+<ul>
+<li>事件.stop阻止冒泡</li>
+<li>事件.prevent 阻止默认行为</li>
+<li>事件.self 事件只作用于本元素</li>
+<li>事件.once 事件只触发一次</li>
+<li>事件.capture 把冒泡事件改成捕获事件</li>
+<li>事件修饰符可以连写 <code>&lt;a :href=&quot;url&quot; @click.prevent.once&gt;百度&lt;/a&gt;</code></li>
+</ul>
+</li>
+<li><p>键盘修饰符: keydown.键码值或keydown.a  enter delete</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keypress特殊的按键不能够使用，一般使用keydown代替keypress</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>事件和按键可以结合使用：@click.shift</p>
+</li>
+<li><p>@keydown.ctrl.exact=”fn” exact 修饰符允许你控制由精确的系统修饰符组合触发的事件。 精确匹配， 只有当前给定的按键生效，组合键不生效</p>
+</li>
+<li><p>mouseup mousedown 不区分左中右键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@mousedown.left  middle  right 区分左右中键</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HTML中使用监听事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">你可能注意到这种事件监听的方式违背了关注点分离 (separation of concern) 这个长期以来的优良传统。但不必担心，因为所有的 Vue.js 事件处理方法和表达式都严格绑定在当前视图的 ViewModel 上，它不会导致任何维护上的困难。实际上，使用 v-on 有几个好处：</span><br><span class="line">扫一眼 HTML 模板便能轻松定位在 JavaScript 代码里对应的方法。</span><br><span class="line">因为你无须在 JavaScript 里手动绑定事件，你的 ViewModel 代码可以是非常纯粹的逻辑，和 DOM 完全解耦，更易于测试。</span><br><span class="line">当一个 ViewModel 被销毁时，所有的事件处理器都会自动被删除。你无须担心如何清理它们。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/07/07/vue-5/" data-toggle="tooltip" data-placement="top"
+                           title="vue-5">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/06/28/vue-3/" data-toggle="tooltip" data-placement="top"
+                           title="vue-3">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#列表渲染"><span class="toc-text">列表渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件"><span class="toc-text">事件</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/woshixiaoxu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiaoxu 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://woshixiaoxu.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/img/head.jpg">
+</body>
+
+</html>

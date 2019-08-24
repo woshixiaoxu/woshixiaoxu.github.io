@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小许在 Github 上的个人博客">
+    <meta name="keyword" content>
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="xiaoxu" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        vue-1｜xiaoxu
+        
+    </title>
+
+    <link rel="canonical" href="http://woshixiaoxu.github.io/2018/06/24/vue-1/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    xiaoxu
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/catalog/">Catelog</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/img/bg.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>vue-1</h1>
+                    
+                    <span class="meta">
+                         作者 小许哇哇哇
+                        <span>
+                          日期 2018-06-24
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#MVVM"
+                           title="MVVM">MVVM</a>
+                        
+                        <a class="tag" href="/tags/#vue指令"
+                           title="vue指令">vue指令</a>
+                        
+                        <a class="tag" href="/tags/#vue优势"
+                           title="vue优势">vue优势</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            vue-1
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="认识Vue"><a href="#认识Vue" class="headerlink" title="认识Vue"></a>认识Vue</h2><ul>
+<li><p><strong>含义:</strong>Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+</li>
+<li><p><strong>什么是MVVM</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MVVM是Model-View-ViewModel的缩写。MVVM是一种设计思想。Model 层代表数据模型，也可以在Model中定义数据修改和操作的业务逻辑；View 代表UI 组件，它负责将数据模型转化成UI 展现出来，ViewModel 是一个同步View 和 Model的对象。在MVVM架构下，View 和 Model 之间并没有直接的联系，而是通过ViewModel进行交互，Model 和 ViewModel 之间的交互是双向的， 因此View 数据的变化会同步到Model中，而Model 数据的变化也会立即反应到View 上。ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来，而View 和 Model之间的同步工作完全是自动的，无需人为干涉，因此开发者只需关注业务逻辑，不需要手动操作DOM, 不需要关注数据状态的同步问题，复杂的数据状态维护完全由MVVM 来统一管理。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>viewModel:虚拟DOM</strong></p>
+</li>
+<li><p><strong>mvvm和mvc区别</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">都是一种设计思想。主要就是mvc中Controller演变成mvvm中的viewModel。mvvm主要解决了mvc中大量的DOM 操作使页面渲染性能降低，加载速度变慢，影响用户体验。vue数据驱动，通过数据来显示视图层而不是节点操作。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>vue的优点是什么</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+ 低耦合</span><br><span class="line">    - 也称块间联系。指软件系统结构中各模块间相互联系紧密程度的一种度量。模块之间联系越紧密，其耦合性就越强，模块的独立性则越差。就是写一个组件在任何复杂的项目任何复杂的场景下都可以即拿即用这就是低耦合视图（View）可以独立于Model变化和修改，一个ViewModel可以绑定到不同的&quot;View&quot;上，当View变化的时候Model可以不变，当Model变化的时候View也可以不变</span><br><span class="line">+ 可重用性</span><br><span class="line">    - 你可以把一些视图逻辑放在一个ViewModel里面，让很多view重用这段视图逻辑</span><br><span class="line">+ 独立开发</span><br><span class="line">    - 开发人员可以专注于业务逻辑和数据的开发（ViewModel），设计人员可以专注于页面设计</span><br><span class="line">+ 渐进式框架</span><br><span class="line">    - 渐进式框架没有什么限制，可以在此框架上引用其他框架，不像angular1一样想使用框架就得使用它的一套流程限制</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="vue的流程"><a href="#vue的流程" class="headerlink" title="vue的流程"></a>vue的流程</h2><ul>
+<li>必须要有DOM根元素</li>
+<li>实例化对象new Vue({})</li>
+<li>el挂载DOM根元素</li>
+<li>data:{key:val},data储存数据的仓库，key(变量名),val(变量值)</li>
+<li>视图层中使用进行数据渲染<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&apos;app&apos;&gt;&#123;&#123;key&#125;&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">    el:&apos;#app&apos;,</span><br><span class="line">    data:&#123;</span><br><span class="line">        key:&apos;val&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="vue指令"><a href="#vue指令" class="headerlink" title="vue指令"></a>vue指令</h2><ul>
+<li>可以使用vue指令插入到DOM节点中实现一些特殊的功能<ul>
+<li>v-html:把data下的内容插入到DOM节点中，会进行DOM转化</li>
+<li>v-text:把data下的内容插入到DOM节点中，只渲染内容</li>
+<li>v-on:事件类型click=’事件名字’  事件要储存在methods里边,Methods储存事件的仓库,v-on:简写方式 @ 两者等价</li>
+<li>v-show:控制内容的现实隐藏 传入布尔值值 指令中的引号是vue处理过的，引号中可以承载表达式，可以进行运算</li>
+<li>v-if: 控制内容的现实隐藏 传入布尔值值 用法和v-show相同</li>
+<li>v-for: 进行数据遍历后自动渲染DOM,单一数据：<ul>
+<li>v-for:=”数据每一项 of array”   </li>
+<li>v-for:=”(数据每一项,下标) of book”   —</li>
+</ul>
+</li>
+<li>4大循环的区别：<ul>
+<li>for写法繁杂  forEach循环break还有return语句不能使用，无法跳出循环,for in是专门为遍历对象设计的不适合遍历数组</li>
+</ul>
+</li>
+<li>v-model: 数据双向绑定  v-model=’绑定的值’</li>
+<li>v-once: 插入的数据只渲染一次，之后不能够进行变动</li>
+<li>v-bind: 绑定属性 简写方式 :   v-bind:属性=’data下的数据’</li>
+<li>v-cloak:  当数据还没有进行解析时不会去显示DOM节点，直到数据真正插入到DOM节点后才会把DOM节点显示出来,要配合[v-cloak]{display:none;}</li>
+<li>v-pre: 让模板不进行数据渲染，只显示DOM节点中的内容文本</li>
+</ul>
+</li>
+</ul>
+<h2 id="绑定样式"><a href="#绑定样式" class="headerlink" title="绑定样式"></a>绑定样式</h2><ul>
+<li><p>:style=”{key:val,key:val}”</p>
+<ul>
+<li>绑定样式 :style key:val key代表css下的样式类型,val从data下取出来的值,是可以变动的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;h1 :style=&quot;&#123;backgroundColor:bgColor&#125;&quot;&gt;&#123;&#123;name&#125;&#125;&lt;/h1&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&apos;#app&apos;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            name:&apos;改变样式&apos;,</span><br><span class="line">            bgColor:&apos;red&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>把样式中变动的值抽离出来放在data下边统一管理，data下的数据写成对象的方式 :style=”样式对象”   比较常用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">        &lt;h1 :style=&quot;divStyle&quot;&gt;&#123;&#123;name&#125;&#125;&lt;/h1&gt;</span><br><span class="line">        &lt;button @click=&apos;changeStyle&apos;&gt;改变样式&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&apos;#app&apos;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            name:&apos;改变样式&apos;,</span><br><span class="line">            divStyle:&#123;</span><br><span class="line">                backgroundColor:&apos;blue&apos;,</span><br><span class="line">                color:&apos;yellow&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            changeStyle()&#123;</span><br><span class="line">                this.divStyle.backgroundColor=&apos;yellow&apos;,</span><br><span class="line">                this.divStyle.color=&apos;blue&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>style=”[样式对象,样式对象]” 绑定成数组的方法  可以方便把某一个样式对象一次性取消  样式对象=null</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">        &lt;h1 :style=&quot;[divStyle,boxStyle]&quot;&gt;&#123;&#123;name&#125;&#125;&lt;/h1&gt;</span><br><span class="line">        &lt;button @click=&apos;boxStyle=null&apos;&gt;改变样式&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&apos;#app&apos;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            name:&apos;改变样式&apos;,</span><br><span class="line">            divStyle:&#123;</span><br><span class="line">                backgroundColor:&apos;blue&apos;,</span><br><span class="line">                color:&apos;yellow&apos;</span><br><span class="line">            &#125;,</span><br><span class="line">            boxStyle:&#123;</span><br><span class="line">                fontSize:&apos;50px&apos;,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            changeStyle()&#123;</span><br><span class="line">                this.divStyle.backgroundColor=&apos;yellow&apos;,</span><br><span class="line">                this.divStyle.color=&apos;blue&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/06/26/vue-2/" data-toggle="tooltip" data-placement="top"
+                           title="vue-2">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#认识Vue"><span class="toc-text">认识Vue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue的流程"><span class="toc-text">vue的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue指令"><span class="toc-text">vue指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定样式"><span class="toc-text">绑定样式</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/woshixiaoxu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiaoxu 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://woshixiaoxu.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/img/head.jpg">
+</body>
+
+</html>

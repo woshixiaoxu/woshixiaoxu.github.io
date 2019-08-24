@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小许在 Github 上的个人博客">
+    <meta name="keyword" content>
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="xiaoxu" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        vue-3｜xiaoxu
+        
+    </title>
+
+    <link rel="canonical" href="http://woshixiaoxu.github.io/2018/06/28/vue-3/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    xiaoxu
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/catalog/">Catelog</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/img/bg.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>vue-3</h1>
+                    
+                    <span class="meta">
+                         作者 小许哇哇哇
+                        <span>
+                          日期 2018-06-28
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#组件"
+                           title="组件">组件</a>
+                        
+                        <a class="tag" href="/tags/#props传值"
+                           title="props传值">props传值</a>
+                        
+                        <a class="tag" href="/tags/#条件渲染"
+                           title="条件渲染">条件渲染</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            vue-3
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ul>
+<li><p>允许我们使用小型、独立、通常可复用的组件构建大型应用，方便调错</p>
+</li>
+<li><p>全局组件：</p>
+<ul>
+<li>Vue.component(‘组件名’,{模板内容})</li>
+<li>组件内容只能有一个根元素</li>
+<li>组件名声明时不要使用驼峰命名，可使用Kxxxxxx(首字母大写)或者xxx-xxx,和普通的DOM节点进行区分</li>
+<li>注册全局化组件也要实例化Vue,组件可以在DOM中调用多次</li>
+</ul>
+</li>
+<li><p>组件下的data必须是函数模型，一个组件下的data必须是一个函数,因此每个实例可以维护一份被返回对相关的独立拷贝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">    return &#123;&apos;&apos;:&apos;&apos;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>局部组件：</p>
+<ul>
+<li>在Vue实例化下,component:{组件名:{‘模板’},组件名:{‘模板’}},其他内容和全局组件一样<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">    el:&apos;#app&apos;,</span><br><span class="line">    components:&#123;</span><br><span class="line">        &apos;组件名&apos;:&#123;</span><br><span class="line">            template:``,</span><br><span class="line">            data()&#123;&#125;,</span><br><span class="line">            methods:&#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>使用DOM嵌套标签时，组件封装后须使用is插入到DOM中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;select&gt;</span><br><span class="line">    &lt;option is=&apos;组件名&apos;&gt;&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line">new Vue(&#123;</span><br><span class="line">        el:&apos;#app&apos;,</span><br><span class="line">        components:&#123;</span><br><span class="line">            &apos;组件名&apos;:&#123;</span><br><span class="line">                template:`</span><br><span class="line">                        &lt;option&gt;1&lt;/option&gt;</span><br><span class="line">                         `,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组件的作用和优点，什么组件化开发</p>
+<ul>
+<li>作用和优点：<ul>
+<li>提高开发效率</li>
+<li>方便重复使用</li>
+<li>简化调试步骤</li>
+<li>提升整个项目的可维护性</li>
+<li>便于协同开发</li>
+</ul>
+</li>
+<li>组件化开发：<ul>
+<li>组件可以扩展 HTML 元素，封装可重用的代码</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="props传值"><a href="#props传值" class="headerlink" title="props传值"></a>props传值</h2><ul>
+<li>可以把组件复用中变动的值提取出来使用props进行传值,提高组件的复用率<my-component n="2"></my-component>  n=可以当成函数中的实参<br>props:[‘可以当成函数的形参’,’name’],</li>
+<li>使用props传值如果实际传值的位置使用横杠，接收porps值的位置要使用驼峰命名规则，不建议使用 my-msg=”2”  接收时props:[‘myMsg’]</li>
+<li>动态传递props：&lt;my-component v-bind:props值=”data下的数据”/&gt;，父级中的数据向子级中去传递时，使用动态绑定props的方法进行传递，使用动态传递props值时可以传递多种数据类型，提高组件复用率</li>
+<li>什么时候要用poros验证：当协同开发时，开发好的组件别人在使用时，只是用模板，不使用数据，数据一般情况下会自己定义，但是很多情况下别人不知道该传入什么数据类型，在这种情况下要使用props验证<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">props:&#123;   //props验证需要写在对象下</span><br><span class="line">    str:String,</span><br><span class="line">    num:[String,Number],   //传入的props可以是多种数据类型</span><br><span class="line">    n:&#123;    //使用props默认值，使用对象类型，规定数据类型后使用default赋上默认值</span><br><span class="line">        type:Number,  //一旦进行传值,默认值将被替换</span><br><span class="line">        default:100</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">建议在做完项目测试后上线前把porps验证删除而提高性能。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><ul>
+<li>v-if  v-else-if v-else 可以配合使用，配合使用时中不要插入其他DOM节点 </li>
+<li>template 可以使用模板渲染多条内容,且不需要渲染根节点时使用</li>
+<li>v-if=”可以使用表达式”</li>
+<li>使用v-if切换节点时，vue默认是高效渲染的，就地复用元素，Vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染。 这么做除了使 Vue 变得非常快之外，还有其它一些好处,当加入唯一的key值时可以让DOM节点摧毁重建,V-if和v-show的区别:v-show改变style中的样式,v-if把整个节点摧毁重建,一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。</li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/07/04/vue-4/" data-toggle="tooltip" data-placement="top"
+                           title="vue-4">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/06/26/vue-2/" data-toggle="tooltip" data-placement="top"
+                           title="vue-2">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#组件"><span class="toc-text">组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#props传值"><span class="toc-text">props传值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#条件渲染"><span class="toc-text">条件渲染</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/woshixiaoxu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiaoxu 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://woshixiaoxu.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/img/head.jpg">
+</body>
+
+</html>

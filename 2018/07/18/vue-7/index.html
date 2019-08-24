@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小许在 Github 上的个人博客">
+    <meta name="keyword" content>
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="xiaoxu" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        vue-7｜xiaoxu
+        
+    </title>
+
+    <link rel="canonical" href="http://woshixiaoxu.github.io/2018/07/18/vue-7/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    xiaoxu
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/catalog/">Catelog</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/img/bg.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>vue-7</h1>
+                    
+                    <span class="meta">
+                         作者 小许哇哇哇
+                        <span>
+                          日期 2018-07-18
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#vue-cli"
+                           title="vue-cli">vue-cli</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            vue-7
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="vue-cli"><a href="#vue-cli" class="headerlink" title="vue-cli"></a>vue-cli</h1><h2 id="脚手架里包含的文件夹"><a href="#脚手架里包含的文件夹" class="headerlink" title="脚手架里包含的文件夹"></a>脚手架里包含的文件夹</h2><ul>
+<li><p>src文件夹: </p>
+<ul>
+<li>assets图片 </li>
+<li>components所有的组件  </li>
+<li>router路由  </li>
+<li>App.vue主组件</li>
+<li>Main.js全局配置  </li>
+<li>components所有内容渲染到App,vue主组件中，之后再main.js中进行挂在，然后最终渲染到index.html中</li>
+</ul>
+</li>
+<li><p>选取DOM</p>
+<ul>
+<li><p>不推荐let box= document.选取DOM</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div ref=&quot;自己取的要被选取的DOM名&quot;&gt;123&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用时要在方法下  this.$refs.自己取的要被选取的DOM名,nextTick:在vue方法中去改变data下的值时，后续的操作不能够直接拿到变动后的值，拿到的是之前data下声明的初始值,如果想拿到方法变动过之后的值时，需要使用$nextTick(()=&gt;{})</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>兄弟组件传值   childA—-&gt;父组件—–&gt;childB</p>
+<ul>
+<li><p>先在chailda中定义自定义方法，把值传递给父组件 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$emit(&apos;childaclick&apos;,this.childAMsg)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>父组件中使用props绑定的方式把childA传过来的值，传递给childB,childB使用props接收父组件传递过来的值</p>
+</li>
+</ul>
+</li>
+<li><p>路由配置</p>
+<ul>
+<li><p>mode:’history’  把路径中的#去除</p>
+</li>
+<li><p>path: ‘*’,   *一般只做404页面使用，会匹配所有路径，但已有的路径不会被覆盖</p>
+</li>
+<li><p>子路由嵌套：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">在router index.js中 </span><br><span class="line">component: Car,</span><br><span class="line">children:[    //配置子路由</span><br><span class="line">&#123;path: &apos;/car&apos;, component: Auto&#125;,   //配置进入时的默认路由</span><br><span class="line">&#123;path: &apos;auto&apos;, component: Auto&#125;,</span><br><span class="line">&#123;path: &apos;lanbo&apos;, component: Lanbo&#125;</span><br><span class="line">]</span><br><span class="line">在组件中</span><br><span class="line">&lt;router-view&gt;&lt;/router-view&gt;  &lt;!--要在父级路由组件中使用router-view渲染--&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编程式导航：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$router.push(&#123; name: ‘组件取的名字’, params: &#123; userId: 传递的参数&#125;&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命名路由：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link :to=&quot;&#123; name: &apos;User&apos;, params: &#123; userId: 123 &#125;&#125;&quot;&gt;User&lt;/router-link&gt;  路由跳转时可以使用name属性</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命名视图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">path: &apos;/login&apos;,</span><br><span class="line">name: &apos;Login&apos;,</span><br><span class="line">//component: Login</span><br><span class="line">components: &#123;   //声明命名视图,可以使用import引入组件进行替代</span><br><span class="line">    default: Login,    //使用声明视图时，进入login页面后不仅会渲染login组件,还会渲染head和foot组件</span><br><span class="line">    a: Head,           //a和b需要渲染到router-view</span><br><span class="line">    b: Foot</span><br><span class="line">&#125;</span><br><span class="line">在App.vue下进行使用name属性a,b视图的渲染</span><br><span class="line">&lt;router-view name=&quot;a&quot;/&gt;</span><br><span class="line">&lt;router-view name=&quot;b&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用别名：alias: ‘/aliasuser’,   路径取一个其他的名字，但是还是会跳转到对应的组件</p>
+</li>
+<li><p>导航守卫：保护页面，进行权限拦截，没有权限不能查看</p>
+<ul>
+<li>全局守卫：写在main.js中，进行全部页面的拦截<br>前置守卫：router.beforeEach((to, from, next) =&gt; {<br>to进入的页面,from离开的页面,next()通行证，允许进入<br>next()中可以传入path路径和true允许 false不允许 node express<br>}<br>后置钩子：router.afterEach((to, from)=&gt;{没有next参数})</li>
+<li>独享守卫：beforeEnter路由独享守卫在router index下去使用,用法和全局导航守卫完全一样,作用页面不同哪个页面是私密的就在哪个路由里边配置路由独享守卫</li>
+<li>组件中守卫： 在组件中使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteEnter (to, from, next) &#123;</span><br><span class="line">    // 在渲染该组件的对应路由被 confirm 前调用</span><br><span class="line">    // 不！能！获取组件实例 `this`</span><br><span class="line">// 因为当守卫执行前，组件实例还没被创建</span><br><span class="line">next(v =&gt; &#123;   //v当前组件v.数据就可以拿到组件下的数据了</span><br><span class="line">console.log(v.msg);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line">beforeRouteUpdate (to, from, next) &#123; </span><br><span class="line">    // 在当前路由改变，但是该组件被复用时调用</span><br><span class="line">    // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，</span><br><span class="line">    // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。</span><br><span class="line">    // 可以访问组件实例 `this`</span><br><span class="line">&#125;,</span><br><span class="line">导航离开该组件的对应路由时调用,一般起到询问用户的作用</span><br><span class="line">beforeRouteLeave (to, from, next) &#123;</span><br><span class="line">    // 导航离开该组件的对应路由时调用</span><br><span class="line">    // 可以访问组件实例 `this`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/07/23/vue-8/" data-toggle="tooltip" data-placement="top"
+                           title="vue-8">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/07/12/vue-6/" data-toggle="tooltip" data-placement="top"
+                           title="vue-6">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vue-cli"><span class="toc-text">vue-cli</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#脚手架里包含的文件夹"><span class="toc-text">脚手架里包含的文件夹</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/woshixiaoxu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiaoxu 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://woshixiaoxu.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/img/head.jpg">
+</body>
+
+</html>

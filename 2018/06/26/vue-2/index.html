@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小许在 Github 上的个人博客">
+    <meta name="keyword" content>
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="xiaoxu" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        vue-2｜xiaoxu
+        
+    </title>
+
+    <link rel="canonical" href="http://woshixiaoxu.github.io/2018/06/26/vue-2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    xiaoxu
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/catalog/">Catelog</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/img/bg.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>vue-2</h1>
+                    
+                    <span class="meta">
+                         作者 小许哇哇哇
+                        <span>
+                          日期 2018-06-26
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#模板语法"
+                           title="模板语法">模板语法</a>
+                        
+                        <a class="tag" href="/tags/#computed"
+                           title="computed">computed</a>
+                        
+                        <a class="tag" href="/tags/#watch"
+                           title="watch">watch</a>
+                        
+                        <a class="tag" href="/tags/#class"
+                           title="class">class</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            vue-2
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="认识Vue-2"><a href="#认识Vue-2" class="headerlink" title="认识Vue-2"></a>认识Vue-2</h2><ul>
+<li><p><strong>绑定class</strong></p>
+<ul>
+<li><p>:class=”{style中样式的class名:data下声明布尔值}”  ,vue中动态绑定的class可以和原有的class共存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .boxStyle&#123;font-size: 30px;&#125;</span><br><span class="line">    .pStyle&#123;background: red;color: blue;width: 200px;height: 200px;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;app&quot;&gt;   &lt;!--:class=&apos;&#123;key:val&#125;&apos;  key css中的样式 val布尔值--&gt;</span><br><span class="line">    &lt;!--vue中动态绑定的class可以和原有的class共存--&gt;</span><br><span class="line">    &lt;p :class=&quot;&#123;boxStyle:flag&#125;&quot; class=&quot;pStyle&quot;&gt;web0422&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;flag=!flag&quot;&gt;切换样式&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&apos;#app&apos;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            flag:true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>style下.box-style  vue中:class=”{‘box-style’:布尔值}”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">&lt;!--如果style样式的class名有- 在vue中必须用&apos;&apos;当成字符串,否则不生效--&gt;</span><br><span class="line">&lt;p :class=&quot;&#123;&apos;box-style&apos;:flag&#125;&quot; class=&quot;pStyle&quot;&gt;web0422&lt;/p&gt;</span><br><span class="line">&lt;button @click=&quot;flag=!flag&quot;&gt;切换样式&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Input中有布尔值的type属性的表单内容进行结合操作，例如 checkbox</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">&lt;!--绑定class可以结合 input中的checkbox布尔值进行绑定切换--&gt;</span><br><span class="line">&lt;p :class=&quot;&#123;&apos;box-style&apos;:flag&#125;&quot; class=&quot;pStyle&quot;&gt;web0422&lt;/p&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; v-model=&quot;flag&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>:class=”{key:val,key:val}”  绑定class可以绑定多个值</p>
+</li>
+<li><p>:class=”对象”   把多个绑定的class一并写入data下，以对象的形式显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    .box1&#123;font-size: 30px;&#125;</span><br><span class="line">    .box2&#123;background: red;width: 200px;height: 200px;&#125;</span><br><span class="line">    .boxStyle&#123;background: blue;width: 200px;height: 200px;&#125;</span><br><span class="line">    .div-style&#123;font-size: 30px;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;!--绑定class可以绑定多个值--&gt;</span><br><span class="line">    &lt;p :class=&quot;&#123;box1:flag1,box2:flag2&#125;&quot;&gt;web0422&lt;/p&gt;</span><br><span class="line">    &lt;!--把多个绑定的class一并写入data下，以对象的形式--&gt;</span><br><span class="line">    &lt;div :class=&quot;activeStyle&quot;&gt;web0422&lt;/div&gt;</span><br><span class="line">    &lt;button @click=&quot;changeBoo&quot;&gt;切换&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    //样式中横杠,vue的数据下都使用字符串+横杠的方式去表示</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&apos;#app&apos;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            flag1:true,</span><br><span class="line">            flag2:true,</span><br><span class="line">            activeStyle:&#123;</span><br><span class="line">                boxStyle:true,</span><br><span class="line">                &apos;div-style&apos;:true</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            changeBoo()&#123;</span><br><span class="line">                this.activeStyle[&apos;div-style&apos;] = false</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>:class=”[data下的key,data下的key]”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">&lt;p :class=&quot;[boxStyle,divStyle]&quot;&gt;web0422&lt;/p&gt;</span><br><span class="line">&lt;button @click=&quot;changeBoo&quot;&gt;切换&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&apos;#app&apos;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            boxStyle:&apos;box1&apos;,</span><br><span class="line">            divStyle:&apos;box2&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            changeBoo()&#123;</span><br><span class="line">                this.boxStyle = &apos;box3&apos;   //置空时使用字符串</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意：</strong>data:{boxStyle:style下绑定的class,divStyle:style下绑定的class}  置空时使用字符串,样式中横杠,vue的数据下都使用字符串+横杠的方式去表示用数组方式去绑定class时data数据下的key是绑定class使用的，data数据下的value值是style中取的class名,vue会自动查找相对应的class名,数组绑定的方式可以让替换类名之后达到一组样式的替换</p>
+<ul>
+<li><p><strong>模板语法（表达式）</strong></p>
+<ul>
+<li> v-指令中”模板语法”，注意点：可以渲染简单的赋值，简单的运算。不要去使用js语句,会产生模板错误，但可以使用三元运算符,包含js对象的运算可以使用，但不推荐。长语句的计算，不要写在模板里边，难以维护，消耗性能。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;h2&gt;&#123;&#123;name&#125;&#125;&lt;/h2&gt;</span><br><span class="line">&lt;h2&gt;&#123;&#123;10+10&#125;&#125;&lt;/h2&gt;</span><br><span class="line">&lt;h2&gt;&#123;&#123;Math.random()*10&#125;&#125;&lt;/h2&gt;</span><br><span class="line">&lt;h2&gt;&#123;&#123;5&lt;3?true:false&#125;&#125;&lt;/h2&gt;</span><br><span class="line">&lt;h2&gt;&#123;&#123;name.split(&apos;&apos;).reverse().join(&apos;&apos;)&#125;&#125;&lt;/h2&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>计算属性computed</strong></p>
+<ul>
+<li>模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的。在模板中放入太多的逻辑会让模板过重且难以维护，所以要使用计算属性</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>methods计算逻辑的过程，用法基本和methods相同，但要使用return返回计算好的值,最终拿到的是一个计算好的结果时。methods每一次都会进行重复计算，只要调用一次方法就会执行一次方法，computed下的方法是有缓存，只要计算好一次值之后，这个值没有发生改变，它就地复用上一次计算好的值，而不会重复计算，computed性能要比methods高。</li>
+</ul>
+<ul>
+<li><p><strong>watch侦听属性</strong></p>
+<ul>
+<li><p>监听属性，属性和方法名同名，且方法会随着属性的变动而触发，由于性能问题，尽可能避免使用监听属性，如果最终拿到的是一个固定的值时，使用计算属性代替监听属性。</p>
+</li>
+<li><p>深度监听:使用对象数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">对象数据:&#123;</span><br><span class="line">         handler()&#123;   //语句柄固定写法</span><br><span class="line">             console.log(&apos;arr属性被改动&apos;);</span><br><span class="line">         &#125;,</span><br><span class="line">         deep:true    //开启深度监听</span><br><span class="line">     &#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>深度监听，使用对象数据的时候去使用，当开启深度监听时,vue会自动遍历数据，只要里边的数据进行变动就会触发相对应的方法，非常的消耗性能，每当改变数据时就会遍历一次数据对象，谨慎使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">watch:&#123;   //val接收输入框变化的内容</span><br><span class="line">        keyWord(跟随data下变动对应的数据)&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/06/28/vue-3/" data-toggle="tooltip" data-placement="top"
+                           title="vue-3">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/06/24/vue-1/" data-toggle="tooltip" data-placement="top"
+                           title="vue-1">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#认识Vue-2"><span class="toc-text">认识Vue-2</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/woshixiaoxu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiaoxu 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://woshixiaoxu.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/img/head.jpg">
+</body>
+
+</html>

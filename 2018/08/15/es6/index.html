@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小许在 Github 上的个人博客">
+    <meta name="keyword" content>
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="xiaoxu" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        ES6｜xiaoxu
+        
+    </title>
+
+    <link rel="canonical" href="http://woshixiaoxu.github.io/2018/08/15/es6/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    xiaoxu
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/catalog/">Catelog</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/img/bg.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>ES6</h1>
+                    
+                    <span class="meta">
+                         作者 小许哇哇哇
+                        <span>
+                          日期 2018-08-15
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#class"
+                           title="class">class</a>
+                        
+                        <a class="tag" href="/tags/#es5严格模式"
+                           title="es5严格模式">es5严格模式</a>
+                        
+                        <a class="tag" href="/tags/#let"
+                           title="let">let</a>
+                        
+                        <a class="tag" href="/tags/#const"
+                           title="const">const</a>
+                        
+                        <a class="tag" href="/tags/#箭头函数"
+                           title="箭头函数">箭头函数</a>
+                        
+                        <a class="tag" href="/tags/#扩展运算符"
+                           title="扩展运算符">扩展运算符</a>
+                        
+                        <a class="tag" href="/tags/#sybol"
+                           title="sybol">sybol</a>
+                        
+                        <a class="tag" href="/tags/#async"
+                           title="async">async</a>
+                        
+                        <a class="tag" href="/tags/#promise"
+                           title="promise">promise</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            ES6
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h2 id="es5的补充"><a href="#es5的补充" class="headerlink" title="es5的补充"></a>es5的补充</h2><ul>
+<li><p><strong>es5严格模式</strong>：”use strict”</p>
+</li>
+<li><p><strong>JSON与字符串的转换</strong></p>
+<ul>
+<li>JSON转字符串：JSON.stringify()</li>
+<li>字符串转JSON：JSON.parse()</li>
+</ul>
+</li>
+<li><p><strong>遍历数组的三种方式</strong></p>
+<ul>
+<li><p><strong>arr.forEach</strong>(遍历数组的每一项)<br><code>arr.forEach(function(item,index){
+  console.log(item,2222) 
+})</code></p>
+</li>
+<li><p><strong>arr.map</strong>(通过计算，获得新的数组，用的比较多的一种方法)<br><code>var arr2 = arr.map(function(item,index){
+  console.log(item,333)
+  return item+1  //计算
+})
+console.log(arr2) //[2, 3, 4, 5, 6, 5]</code></p>
+</li>
+<li><p><strong>arr.filter</strong>(过滤、筛选，返回一个新的数组)<br><code>var arr3 =  arr.filter(function(item,index){
+  return item&gt;3
+})//  过滤 筛选    返回一个新的数组
+console.log(arr3) //[4,5,4]</code></p>
+</li>
+</ul>
+</li>
+<li><p><strong>改变this的指向</strong></p>
+<ul>
+<li>bind call apply</li>
+</ul>
+</li>
+<li><p><strong>创建新对象object.create</strong>(原型，新的属性)</p>
+<ul>
+<li><p>writable:true     新的属性是否能修改</p>
+</li>
+<li><p>configurable:true     新属性是否能删除</p>
+</li>
+<li><p>enumerable:true     新属性是否能遍历(for in)</p>
+<p>`<br>var obj1 = Object.create(obj,{<br>  sex:{</p>
+<pre><code>value:&quot;男&quot;,//  新属性的值
+writable:true,  // 新属性是否能修改   Cannot assign to read only property &apos;sex&apos; of object
+configurable:true,// 新属性是否能删除   Cannot delete property &apos;sex&apos; of
+enumerable:true  //新属性是否能遍历  枚举  for in    </code></pre><p>  }<br>})<br>`</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="es6的内容"><a href="#es6的内容" class="headerlink" title="es6的内容"></a>es6的内容</h2><ul>
+<li><p><strong>let声明变量</strong></p>
+<ul>
+<li>没有声明变量，不能使用</li>
+<li>不能重复使用相同的变量名称</li>
+<li>let有块级作用域</li>
+<li>不存在变量提升的问题</li>
+<li>暂时性死区</li>
+</ul>
+</li>
+<li><p><strong>const声明变量</strong></p>
+<ul>
+<li>声明时必须有初始值</li>
+<li>声明的常量不能修改</li>
+<li>声明的是常量</li>
+</ul>
+</li>
+<li><p><strong>箭头函数</strong></p>
+<ul>
+<li>箭头函数的形参只有一个时,()=&gt;{} 的括号可省略</li>
+<li>()=&gt;{}执行语句只有一句时，{}可省略</li>
+<li>()=&gt;{}执行语句只有一句时，并且是有return返回值的时候,{}和return都可以省略</li>
+</ul>
+</li>
+<li><p><strong>箭头函数中的this</strong></p>
+<ul>
+<li>全局下this指向window</li>
+<li>事件函数中指向window</li>
+<li>构造函数中,this在哪定义指向哪</li>
+</ul>
+</li>
+<li><p><strong>箭头函数有哪些特性</strong></p>
+<ul>
+<li><p>不能作为构造函数，不能使用new</p>
+</li>
+<li><p>不能使用argumetns,取而代之用rest参数…解决</p>
+<ul>
+<li>rest参数形式：···变量名<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function add(...values) &#123;</span><br><span class="line">let sum = 0;</span><br><span class="line"></span><br><span class="line">for (var val of values) &#123;</span><br><span class="line">    sum += val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(2, 5, 3) // 10</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>不绑定this，会捕获其定义时所在的this指向作为自己的this。由于在vue中自动绑定 this 上下文到实例中，因此不能使用箭头函数来定义一个周期方法。箭头函数的this永远指向上下文的this，call、apply、bind也无法改变</p>
+</li>
+<li><p>箭头函数没有原型对象</p>
+</li>
+</ul>
+</li>
+<li><p><strong>扩展运算符</strong></p>
+<ul>
+<li>字符串分割成类数组<br><code>var fun = (...nums)=&gt;{
+  console.log(nums[2])
+}
+fun(1,2,3,4)</code></li>
+<li>es5里给变量设置默认值<br><code>function funs(x,y){
+  y = y || &quot;world&quot;
+  console.log(x,y)
+}
+funs(&quot;hello&quot;) // hello world
+funs(&quot;hello&quot;,&quot;china&quot;) //hello china
+funs(&#39;hello&#39;,&quot;&quot;) // hello world</code></li>
+<li>es6  给变量设置默认值 可以直接在形参上面赋值<br><code>function func(x,y=&quot;world&quot;){
+  console.log(x,y)
+}
+func(&quot;hello&quot;) // hello world
+func(&quot;hello&quot;,&quot;china&quot;) //hello china
+func(&#39;hello&#39;,&quot; &quot;)//hello</code></li>
+</ul>
+</li>
+<li><p><strong>新的数据类型</strong>：symbol</p>
+<ul>
+<li>独一无二的</li>
+<li>调用symbol里的描述：变量.description</li>
+<li>不能进行运算</li>
+<li>for in不能遍历对象里的symbol类型的属性</li>
+</ul>
+</li>
+<li><p><strong>Promise</strong></p>
+<ul>
+<li>承诺处理异步操作</li>
+<li>异步 执行中 已成功 已失败</li>
+<li>含义：promise是异步编程的一种解决方法，简单来说，promise就是一个容器，里面保存着某个未来才会结束的事件(通常是一个异步操作)的结果，从语法上说，promise是一个对象，从它可以获取异步操作的消息，promise提供了统一的API，各种异步操作都可以用同样的方法进行处理。</li>
+<li>Promise对象的特点<ul>
+<li>对象的状态不受外界影响，promise对象代表一个异步操作，有三种状态，pending（进行中）、fulfilled（已成功）、rejected（已失败）。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态，这也是promise这个名字的由来“承诺”；</li>
+<li>一旦状态改变就不会再变，任何时候都可以得到这个结果，promise对象的状态改变，只有两种可能：从pending变为fulfilled，从pending变为rejected。这时就称为resolved（已定型）。如果改变已经发生了，你再对promise对象添加回调函数，也会立即得到这个结果，这与事件（event）完全不同，事件的特点是：如果你错过了它，再去监听是得不到结果的。</li>
+<li>有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise对象提供统一的接口，使得控制异步操作更加容易。</li>
+<li>Promise也有一些缺点。首先，无法取消Promise，一旦新建它就会立即执行，无法中途取消。其次，如果不设置回调函数，Promise内部抛出的错误，不会反应到外部。第三，当处于pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。</li>
+</ul>
+</li>
+<li>Promise的用法：<ul>
+<li>是一个构造函数，这个构造函数里有两个参数，分别是：resolve（成功之后的回调函数）、reject（失败之后的回调函数）。   </li>
+<li>因为promise表示的是一个异步操作，每当我们new一个promise实例，就表示一个具体的异步操作，那么这个异步操作的结果就只能有两种状态：成功/失败，两者都需要回调函数resolve/reject返回。所以内部拿到操作的结果后，无法使用return把操作结果返回给调用者，这时候只能用回调函数的形式来把成功或失败的结果返回给调用者。<br><code>let p = new Promise((resolve,reject)=&gt;{
+if(false){
+  resolve(&quot;success&quot;)
+}else{
+  reject(&quot;error&quot;)
+}
+})
+p.then((res)=&gt;{
+console.log(res)
+}).catch((err)=&gt;{
+console.log(err)
+})</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>async</strong> 函数,用来简化异步操作</p>
+<ul>
+<li>需要配合promise使用<br>`<br>function pro(num){<br>  let p = new Promise((resolve,reject)=&gt;{<pre><code>setTimeout(()=&gt;{
+    resolve(num)
+},1000)</code></pre>  })<br>  return p<br>}<br>async function asy(){<br>var msg =  await pro(0) //等待执行完再进行下一步操作<br>console.log(msg)<br>var msg1 =  await pro(2)<br>console.log(msg1)<br>console.log(1)<br>}<br>asy()<br>`</li>
+</ul>
+</li>
+<li><p><strong>class 类</strong></p>
+<ul>
+<li><p>es6属性要写在constructor里<br>`<br>class Person{<br>  constructor(name=”ujiuye”,age=”12”){//一般情况下，构造函数需要给默认的属性值</p>
+<pre><code>this.name = name
+this.age = age</code></pre><p>  }<br>  say(){</p>
+<pre><code>console.log(`my name is ${this.name},我的年龄是 ${this.age}岁`)</code></pre><p>  }<br>}<br>var offcn = new Person(“offcn”,20);<br>offcn.say()<br>`</p>
+</li>
+<li><p>继承<br>`<br>class Son extends Person{<br>  constructor(name,age,city){</p>
+<pre><code>super(name,age)  //复制父类的属性
+this.city = city</code></pre><p>  }<br>  say(){</p>
+<pre><code>console.log(`${this.name}+来自+${this.city}`)</code></pre><p>  }<br>}<br>var son = new Son(“hah”,”12”,”北京”)<br>son.say()<br>`</p>
+</li>
+</ul>
+</li>
+<li><p><strong>数据结构</strong></p>
+<ul>
+<li><p>set</p>
+<ul>
+<li>set[1,2,2,3,4]    默认会把相同的值去掉</li>
+<li>set.size     set的长度</li>
+<li>set.add()     添加一项，已有的项不能添加</li>
+<li>set.delete(key)  删除一项</li>
+<li>set.has()     判断是否存在某一项</li>
+<li>set.clear()   清空</li>
+</ul>
+</li>
+<li><p>map</p>
+<ul>
+<li>map   去掉key相同的一项，并且这项是前面的</li>
+<li>map.set()     添加一项，如果key值存在 替换value</li>
+<li>map.delete(key)   删除一项，返回值为true || false</li>
+<li>map.clear()      清空</li>
+<li>map.has()     判断某一项是否存在 返回值为true || false</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>数据类型扩展</strong></p>
+<ul>
+<li><p>字符串</p>
+<ul>
+<li>str.includes()    判断字符是否出现</li>
+<li>str.startsWith()  判断字符是否在开始出现</li>
+<li>str.endWith()     判断字符是否在结束出现</li>
+<li>str.repeat(num)   复制字符串</li>
+</ul>
+</li>
+<li><p>number</p>
+<ul>
+<li>Number.isFinite()     判断数值是否是有限大的</li>
+<li>Number.isInteger()    判断数值是否是整数</li>
+</ul>
+</li>
+<li><p>Math</p>
+<ul>
+<li>Math.trunc(3.23)    去掉小数点之后的</li>
+</ul>
+</li>
+<li><p>对象的扩展</p>
+<ul>
+<li>object.is(‘’,’’)   判断两个数据是否完全相等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/08/12/vue-11/" data-toggle="tooltip" data-placement="top"
+                           title="vue-11">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6"><span class="toc-text">ES6</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#es5的补充"><span class="toc-text">es5的补充</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#es6的内容"><span class="toc-text">es6的内容</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/woshixiaoxu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; xiaoxu 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://woshixiaoxu.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/img/head.jpg">
+</body>
+
+</html>
